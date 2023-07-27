@@ -12,9 +12,8 @@ public class ProductoService {
 
     public ProductoService() {
         this.input = new Scanner(System.in).useDelimiter("\n");
-        this.listaProductos = new ArrayList();
+        this.listaProductos = new ArrayList<>();
     }
-
 
     public void agregarProductos() {
         char opcion;
@@ -38,12 +37,12 @@ public class ProductoService {
             System.out.println("Desea ingresar un nuevo producto? S/N");
             opcion = input.next().toUpperCase().charAt(0);
 
-        } while(opcion == 'S');
+        } while (opcion == 'S');
     }
 
     public void mostrarProductos() {
         System.out.println("-----Mostrando Productos-----");
-        for(Producto producto : listaProductos) {
+        for (Producto producto : listaProductos) {
             System.out.println(producto);
         }
         System.out.println("---------------");
@@ -51,8 +50,9 @@ public class ProductoService {
     }
 
     public Producto productoBuscado(String nombre) {
-        for(Producto producto: listaProductos) {
-            if(producto.getNombre().equalsIgnoreCase(nombre)) return producto;
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equalsIgnoreCase(nombre))
+                return producto;
         }
 
         System.out.println(nombre + " no fue encontrado en la lista de productos");
@@ -65,16 +65,17 @@ public class ProductoService {
 
         Producto producto = productoBuscado(nombre);
 
-       if(producto != null) {
-           if(producto.getInventario() > 0) {
-               producto.setInventario(producto.getInventario() - 1);
-               System.out.println(producto.getNombre() + " comprado! Ahora tiene un inventario de " + producto.getInventario());
-               return true;
-           } else {
-               System.out.println(producto.getNombre() + " no tiene inventario disponible!");
-               return false;
-           }
-       }
+        if (producto != null) {
+            if (producto.getInventario() > 0) {
+                producto.setInventario(producto.getInventario() - 1);
+                System.out.println(
+                        producto.getNombre() + " comprado! Ahora tiene un inventario de " + producto.getInventario());
+                return true;
+            } else {
+                System.out.println(producto.getNombre() + " no tiene inventario disponible!");
+                return false;
+            }
+        }
 
         return false;
     }
@@ -85,9 +86,10 @@ public class ProductoService {
 
         Producto producto = productoBuscado(nombre);
 
-        if(producto != null ){
+        if (producto != null) {
             producto.setInventario(producto.getInventario() + 1);
-            System.out.println(producto.getNombre() + " repuesto! Ahora tiene un inventario de " + producto.getInventario());
+            System.out.println(
+                    producto.getNombre() + " repuesto! Ahora tiene un inventario de " + producto.getInventario());
         }
 
     }
@@ -98,7 +100,7 @@ public class ProductoService {
 
         Producto producto = productoBuscado(nombre);
 
-        if(producto != null) {
+        if (producto != null) {
             listaProductos.remove(producto);
         }
     }

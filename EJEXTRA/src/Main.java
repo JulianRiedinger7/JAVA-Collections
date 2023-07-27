@@ -3,13 +3,14 @@ import Services.ProductoService;
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner input = new Scanner(System.in).useDelimiter("\n");
     public static void main(String[] args) {
         menu();
     }
-
+    
     public static void menu() {
+        
         ProductoService ps = new ProductoService();
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
         int opcion;
 
         do {
